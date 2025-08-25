@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="PT-BR">
+<head>
+<meta charset="UTF-8"/>
+  
+<style>
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      padding: 20px;
+    }
+	
+	p {
+	text-align: justify;
+	}
+	
+	h1 {
+	font-size: 20pt;
+	text-indent: 10px;
+	color: #920c0c;
+	text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+	}
+
+    h2 {
+      background: #920c0c;;
+      color: white;
+      padding: 10px;
+      margin: 0;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background 0.3s;
+	  margin-right: 1350px;
+	    position: relative; /* necessário para posicionar a seta */
+  }
+
+  /* seta padrão (↓) */
+  h2::after {
+    content: "▼";
+    font-size: 14px;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+  }
+
+  /* quando o h2 estiver "ativo", gira a seta (apontando pra cima) */
+  h2.ativo::after {
+    transform: translateY(-50%) rotate(180deg);
+  }
+
+    h2:hover {
+      background: #bc5757;
+    }
+
+    .conteudo {
+      display: none;
+      background: white;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-top: none;
+      border-radius: 0 0 5px 5px;
+	  margin-right: 1350px;
+    }
+
+    .ativo + .conteudo {
+      display: block;
+    }
+
+table#filmes {
+border: 1px solid #000000;
+border-spacing: 0px;
+}
+
+table#filmes td {
+border: 1px solid #000000;
+padding: 6px;
+}
+
+table#filmes td#especificacoes {
+background-color: #bc5757;
+color: #ffffff;
+text-align: center;
+font-weight: bold;
+}
+
+table#filmes td a {
+text-decoration: none;
+color:  red;
+}
+
+ /* mini quadradinho */
+  .poster-thumb {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  .poster-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* modal simples */
+  .modal {
+    display: none; /* escondido por padrão */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 3px solid #920c0c;
+    padding: 10px;
+    z-index: 1000;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+  }
+  .modal img {
+    max-width: 250px; /* poster não muito grande */
+    height: auto;
+    display: block;
+  }
+  .modal-close {
+    display: block;
+    text-align: right;
+    cursor: pointer;
+    font-weight: bold;
+    color: #920c0c;
+  }
+  /* fundo escuro */
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999;
+  }
+
+
+</style>
+</head>
+<body>
+
+<h1>Clique nos tópicos para abrir e fechar!</h1>
+
+<h2>Avisos!</h2>
+  <div class="conteudo">
+    <p>- O nome dos filmes está em inglês.</p>
+    <p>- Os filmes estão organizados em ordem alfabética. Se for franquias, um está abaixo do outro em ordem, independente da inicial do nome original</p>
+  </div>
+
+  <h2>Sobre os arquivos!</h2>
+  <div class="conteudo">
+    <p>- Todos os filmes estão em seu idioma original de acordo com sua nacionalidade</p>
+    <p>- Todos os filmes são legendados em PT-BR com legenda fixa amarela.</p>
+    <p>- Todos os filmes estão no formato de vídeo MP4.</p>
+  </div>
+
+  <h2>Como baixar?</h2>
+  <div class="conteudo">
+    <p>- Escolha a Qualidade 480p ou 1080p.</p>
+    <p>- Qualidade 480p é ideal para celulares.</p>
+    <p>- Qualidade 1080p é ideal para computadores e televisores.</p>
+    <p>- Clique sobre a palavra Drive.</p>
+  </div>
+
+  <h2>Pedidos de filmes</h2>
+  <div class="conteudo">
+    <p>Enviar seu pedido para o email:</p>
+    <p>No email deve conter: Nome Original do Filme / Ano de Lançamento / Qualidade de preferência (480p ou 1080p).</p>
+    <p>Exemplo: Gostaria de baixar o filme 40 Acres (2024) em 1080p.</p>
+  </div>
+
+  <h2>Links Indisponiveis?</h2>
+  <div class="conteudo">
+    <p>Enviar um email avisando para:</p>
+    <p>No email deve conter o nome do filme (igual escrito na tabela) que está com o link indisponível.</p>
+  </div>
+
+ <h2>Novidades do dia 25/08/25!</h2>
+  <div class="conteudo">
+
+ </div>
+ <h2>Lista completa de filmes</h2>
+  <div class="conteudo">
+<table id="filmes">
+<tr><td id="especificacoes">POSTER</td><td id="especificacoes">NOME</td><td id="especificacoes">ANO</td><td id="especificacoes">480p</td><td id="especificacoes">1080p</td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rAYkyMUPouCnzguUpKCiw3fa5ar.jpg')"><img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rAYkyMUPouCnzguUpKCiw3fa5ar.jpg"></div></td><td>40 Acres</td><td>2024</td><td><a href="https://drive.google.com/uc?export=download&id=18miiG4JFjTSa2ogMMZq6IxeaiZzez3i2" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1y2RKoHbKt_ZgTFRgE0id9fNzG_3kPbAz" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ihXINKQfzdaVKvZwZqmchy20uVD.jpg')"><img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ihXINKQfzdaVKvZwZqmchy20uVD.jpg"></div></td><td>A Sacrifice</td><td>2024</td><td> <a href="https://drive.google.com/uc?export=download&id=1J60ekmoKu1ry0AEJ_slt85-cHr4Pep4e" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1tETTNmTed1zCCd05w_eQLDLR8ob9_yhw" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9jrhldzLHXia0uieyqK8UJ8PNAG.jpg')"><img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9jrhldzLHXia0uieyqK8UJ8PNAG.jpg"></div></td><td>Abandoned Man</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1VbXq675SvEICbsMrGoQ1XmlyTxZLEkaL" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1QljQ6Lbktr0KUE6H9v4Pqfskl3uD3jzk" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r2mnkY3fmcvCpRs4qB7rPnHcxVo.jpg')"><img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r2mnkY3fmcvCpRs4qB7rPnHcxVo.jpg"></div></td><td>Barron's Cove</td><td>2024</td><td> <a href="https://drive.google.com/uc?export=download&id=1q2K2Zg8rqNkyutcw3wrYZ-OkCTArKNe3" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1IBsWF1KDaYw8dzYQzbuiy-jrRwSeQ_y1" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Death of a Unicorn</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1wRSDVJvD3mLs9JfH-kJVxjUsl1mX8nDf" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1B2FUduG8PNJVhq3EU7p15rt7-xUjiFgm" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Dirty Dancing</td><td>1987</td><td> <a href="https://drive.google.com/uc?export=download&id=1BUjOxQzFj_-xB_KfK5nT9G2yVFbWfWwV" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1XsP8LwUE7Mk68MQr8k358hjG3hJeGZn5" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Drive Me Crazy</td><td>1999</td><td> <a href="https://drive.google.com/uc?export=download&id=1g2gTBEfEmpJSoSUH_l0DHJ_kHfJS1EUx" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1D4EHLH1p16Tl74y7OJNbvv5Rd7etkb_p" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Eenie Meanie</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=13n7JLsDCmORuMPz25-nVioPX3faMNxZa" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1YRO5jJeMQ985kyxH4iwgq7WZk0OuNhu3" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>F1 - The Movie</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1kpKDBUgFDuyd10nH6c-GXK9vBRpa6MUu" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1apvhNn1r5AQzc8byWWO8fq17CG_veeRv" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Final Destination 1</td><td>2000</td><td> <a href="https://drive.google.com/uc?export=download&id=1VZ7s4KajH_Yj5RjqBiQq9xzPaVHexqXd" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1N8u8jimljZ61CsCthwN-4-tYgwk8nYzX" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Final Destination 2</td><td>2003</td><td> <a href="https://drive.google.com/uc?export=download&id=19YKuOKyTHDJmUwZ8A5sJXp6t58_ELIBG" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=10WicwdDZ7bagjIEUgiNhgl5Sf7OA-J9u" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Final Destination 3</td><td>2006</td><td> <a href="https://drive.google.com/uc?export=download&id=1SL7HbIdKfPgBssUEKk1vOT5tShJ0wSL0" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1Y6az0A_dWWWUju5bVaNTC9xpZ9ZCo38S" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>The Final Destination</td><td>2009</td><td> <a href="https://drive.google.com/uc?export=download&id=1lv1MFJCs6cY9aoT5MW2qAJovhq7OsCSt" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=127LWCuFiSWLoeNCkbAPTp79SmZ344eow" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Final Destination 5</td><td>2011</td><td> <a href="https://drive.google.com/uc?export=download&id=1fol40mcIQtj3FMWm1jdLH67Ys7YClD8v" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1WS8SHYGtjXku1gC5LCAlJVMd18yv8yEs" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Final Destination Bloodlines</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1cdbWn73kTxValf2i1Xx8-sNgUhR-57-4" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=11zUOb5QV7SPy5xCkWMqOWZ0EYqpSs7S9" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Frankenstein</td><td>1931</td><td> <a href="https://drive.google.com/uc?export=download&id=1imGMbSWsHq19Y8g9amZMpDzF6amXLOMo" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=19h_1fLj62saeCd9XksKNLmfeGENK_8Nu" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Hallow Road</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=13sluCbTZHF4MI5sH6vWzkaEYq6_0tonl" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1zldPWSALhICoUXnwMPn6W30lA4As1Ls4" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Jurassic Park</td><td>1993</td><td> <a href="https://drive.google.com/uc?export=download&id=1K3F6VXZyhZox_Q9TmsmKfPx2e-aGQnKr" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=13vQRWO-D8ebmM_mpAy5qUvdxnjPUbp6V" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>The Lost World Jurassic Park</td><td>1997</td><td> <a href="https://drive.google.com/uc?export=download&id=1ZKRP1-hHcwX3aoGvvEwxmpXMCRiDl2ya" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1pEpWRVQDmJ2Tii2RVtkFDZnvOfihMfHu" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Jurassic Park 3</td><td>2001</td><td> <a href="https://drive.google.com/uc?export=download&id=1kkD4aZ-hGbAlMqsOyBoeHq1_bpneT9TZ" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1Vra7ci_gqIqn09kxOZEbDZo68bnPzE82" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Locked</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1rlPt_9CypPbkdFwMMvksLQMcqH2UeSis" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1KxcfVtbTgRwtyn0W2I2c7veSRppFwRs8" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Maa</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1q-Oyzf30b431w9BT8h-krfFlycK84kKL" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1ZW0-_jseqZ3CNXZh6J2clwMmh26LtRZ-" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Neighborhood Watch</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=12eTLRNtxvS5mvZ2VFdhv-yhmrbc1xIzo" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1wK-7Wy_W0gCRQ4JnULz3ZP3pnO8ygFDU" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Popeye's Revenge</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1HEXbv_VBHa_pEfhOt-RTI-r33N2LXpsL" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1sCEQ8MGTp-Kh-psEn5xrdbfInxIbba9B" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Sinners</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1u1rKFgLsRMyLqfT6tsKUDm6Y-mPdW7Y9" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1gzZQ_RyCFrL98THndqfMjxDUUQOXcZNa" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Snow White</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1lIWqFvyDjvZer2m9int1590T1hQ8jhuU" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1ALLuAI_J4YHuU6rdyT12m18d3l1j_GGP" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Soylent Green</td><td>1973</td><td> <a href="https://drive.google.com/uc?export=download&id=1eWs1wgw3z6vd4HE-s-QJbZIGpUmnK9Jx" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1v9NP_VIJ1YnE2Wx6r0GBQFkHyxfkW_WS" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Superman</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1OntcRRANQ7nQTaAUTcAN_JU_Z-YUGdQD" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=12W_FsNdMwyAzkfjB6sGuqy9A09adhUvU" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>The Crow</td><td>1994</td><td> <a href="https://drive.google.com/uc?export=download&id=18PbSNi2PHCvZDfmwEC9Rj3ddS-JAiIYS" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=19W_723622Sx_NPbXLxl3gVKOly4QJe8N" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>The Truth About Jussie Smollett</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1w3LwYc2jArejRnJINcHqxBD2JLtfgFIc" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1rccIckcnhAz-dSglfwsRFuYecPHKx9Ni" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>The World Will Tremble</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=13GsbS-pz0ZlsnGo8ZMmwlAB1spUROLDv" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1Nv2fwH1TI7mi5CueArHzh1z5-3SGw5U1" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Thunderbolts</td><td>2025</td><td> <a href="https://drive.google.com/uc?export=download&id=1awnQ6A8a7Mw5cd25lLVe973PYH5MKavF" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1WxYzy2ej4SjAhzKd_IsrtNpwmqwF43up" target="_blank">Drive</a></td></tr>
+<tr><td><div class="poster-thumb" onclick="abrirPoster('#')"><img src="#"></div></td><td>Where the Boys Are</td><td>1960</td><td> <a href="https://drive.google.com/uc?export=download&id=1GxLvOv_Ap8BAMFI2TgyqQ6kSHQA272qN" target="_blank">Drive</a></td><td> <a href="https://drive.google.com/uc?export=download&id=1pG-k5d6EVr7akNqhk8VFvVUOVQCNq4tg" target="_blank">Drive</a></td></tr>
+</table>
+ </div>
+ 
+ <div class="overlay" id="overlay" onclick="fecharPoster()"></div>
+<div class="modal" id="modal">
+  <span class="modal-close" onclick="fecharPoster()">✖</span>
+  <img id="modal-img" src="" alt="Poster">
+</div>
+
+<script>
+function abrirPoster(src) {
+    document.getElementById("modal-img").src = src;
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("overlay").style.display = "block";
+  }
+  function fecharPoster() {
+    document.getElementById("modal").style.display = "none";
+    document.getElementById("overlay").style.display = "none";
+  }
+
+  // Pega todos os H2
+  const botoes = document.querySelectorAll("h2");
+
+  botoes.forEach(h2 => {
+    h2.addEventListener("click", () => {
+      const conteudo = h2.nextElementSibling;
+
+      // Se já estiver aberto, fecha
+      if (h2.classList.contains("ativo")) {
+        h2.classList.remove("ativo");
+        conteudo.classList.remove("visivel");
+        return;
+      }
+
+      // Fecha todos os outros
+      botoes.forEach(b => {
+        b.classList.remove("ativo");
+        if (b.nextElementSibling) {
+          b.nextElementSibling.classList.remove("visivel");
+        }
+      });
+
+      // Abre o clicado
+      h2.classList.add("ativo");
+      conteudo.classList.add("visivel");
+    });
+  });
+  
+ 
+  </script>
+  
+  
+</body>
+</html>
