@@ -11,14 +11,13 @@ body {
 }
 
 h1 {
-  font-family: Arial, sans-serif;
   font-size: 20pt;
   text-indent: 10px;
   color: #920c0c;
   text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
-/* Cabeçalhos e conteúdos colapsáveis */
+/* Cabeçalhos colapsáveis */
 h2 {
   background: #920c0c;
   color: white;
@@ -55,48 +54,42 @@ h2.ativo::after {
   flex-wrap: wrap;
   gap: 20px;
 }
-.poster-thumb {
-  width: 150px;
-  position: relative;
+
+/* Cada poster individual */
+.poster-item {
+  width: 150px; /* largura fixa */
+  position: relative; /* necessário para o label absoluto */
   cursor: pointer;
 }
-.poster-thumb img {
+
+.poster-item img {
   width: 100%;
   height: auto;
   display: block;
   border-radius: 5px;
   transition: transform 0.2s;
 }
-.poster-thumb img:hover { transform: scale(1.05); }
 
-/* Modal dos botões */
-#modal-resolucao {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.6);
-  justify-content: center;
+.poster-item img:hover {
+  transform: scale(1.05);
+}
+
+.poster-label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 140px;
+  display: flex;
   align-items: center;
-}
-.modal-content {
-  width: 30%;
-  height: 30%;
-  background: white;
-  padding: 20px;
-  border-radius: 10px;
-  text-align: center;
-}
-.modal-content button {
-  margin: 10px;
-  padding: 20px 30px;
-  font-size: 20px;
-  cursor: pointer;
-  background-color: #920c0c;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.6);
   color: #ffffff;
-}
-.modal-content button:hover { 
-  background-color: #ff0000; 
+  font-size: 9pt;
+  text-align: center;
+  line-height: normal;
+  text-shadow: 1px 1px 4px #000000;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 /* Modal do pôster grande */
@@ -122,23 +115,6 @@ h2.ativo::after {
   cursor: pointer;
 }
 
-.poster-label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0,0,0,0.6);
-  color: #ffffff;
-  font-size: 9pt;
-  text-align: center;
-  line-height: normal;
-  text-shadow: 1px 1px 4px #000000;
-  padding: 5px;
-  border-radius: 5px;
-}
 </style>
 </head>
 <body>
@@ -150,16 +126,14 @@ h2.ativo::after {
     <p>- Todos os filmes estão em seu <b>idioma original</b> de acordo com sua nacionalidade,</p>
     <p>- Todos os filmes são <b>legendados em PT-BR</b> com legenda fixa amarela.</p>
     <p>- Todos os filmes estão no <b>formato de vídeo MP4</b>.</p>
-	<p>- A maioria dos filmes estão na qualidade 480p e 1080p.</p>
-    <p>- Qualidade <b>480p</b> é ideal para <b>celulares</b>.</p>
-    <p>- Qualidade <b>1080p</b> é ideal para <b>computadores e televisores</b>.</p>
+	<p>- A maioria dos filmes estão na  <b>qualidade 1080p</b>.</p>
   </div>
 
 <h2>🔍 Como pesquisar filmes!</h2>
 <div class="conteudo">
   <p><strong>No computador:</strong></p>
   <ul>
-	<li>Abra o topico de filmes.</li>
+	<li>Abra o catálogo de filmes.</li>
     <li>Pressione <b>Ctrl + F</b> (Windows) ou <b>Command + F</b> (Mac).</li>
     <li>Vai aparecer uma caixinha de busca no topo ou no canto do navegador.</li>
     <li>Digite o nome do filme em inglês e o navegador vai mostrar os resultados destacados.</li>
@@ -167,438 +141,327 @@ h2.ativo::after {
 
   <p><strong>No celular:</strong></p>
   <ul>
-	<li>Abra o topico de filmes.</li>
+	<li>Abra o catálogo de filmes.</li>
     <li>No navegador (Chrome, Edge, Safari etc.), toque nos <b>três pontinhos</b> ou no menu.</li>
     <li>Escolha a opção <b>“Encontrar na página”</b> ou <b>“Buscar na página”</b>.</li>
     <li>Digite o nome do filme em inglês e o navegador vai mostrar os resultados destacados.</li>
   </ul>
 </div>
-	
-  <h2>⬇️ Como baixar!</h2>
-  <div class="conteudo">
-    <p>- Abra o topico "Lista completa de filmes".</p>
-    <p>- Clique no poster do filme.</p>
-    <p>- Clique sobre a qualidade (480p ou 1080p) que quer baixar.</p>
-    <p>- Você será redirecionado para o filme no drive.</p>
-  </div>
 
-  <h2>❌ Links indisponiveis?</h2>
+  <h2>⬇️ Como baixar?</h2>
   <div class="conteudo">
-    <p>Enviar um email avisando para: <b>filmesempire@proton.me</b></p>
-    <p>No email deve conter o nome do filme que está com o link indisponível.</p>
+    <p>Enviar um email para: <b>filmesempire@proton.me</b></p>
+    <p>No <b>assunto</b> colocar: <b>ACESSO AO DRIVE</b></p>
+    <p>No <b>conteudo</b> informar o <b>endereço de email para acessar a pasta compartilhada do drive.</b></p>
+	<p>Feito isso, aguarde a resposta de confirmação.</p>
   </div>
-
-<h2>🆕 Novidades do dia 27/08/25!</h2>
+</div>
+<h2>🆕 Novidades do dia 28/08/25!</h2>
 <div class="conteudo">
 <div class="poster-container">
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=17UY0r5jlZ4oGTLzfnWzLjpc-S7GkVGXR',
-  'https://drive.google.com/uc?export=download&id=1_4LZcWfhoear24BS0pDzDHZBWW3Penep'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg" alt="John Wick">
-  <div class="poster-label">John Wick (2014)</div>
-</div>
-
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1mp1LNppaNaYLoURqQUqGOwECm2yi6wOm',
-  'https://drive.google.com/uc?export=download&id=1MhRb3Kl1gYRhvBl6_dJ-iPJ5mq8Rkdg_'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg" alt="John Wick Chapter 2">
-  <div class="poster-label">John Wick Chapter 2 (2017)</div>
-</div>
-
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1yXWAqrHO4muQWBURqvEqII0NjmDNKYaF',
-  'https://drive.google.com/uc?export=download&id=1RExZN4Zx1SLxlYS9ibeFlZ4IoqODnvlC'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg" alt="John Wick Chapter 3 - Parabellum">
-  <div class="poster-label">John Wick Chapter 3 - Parabellum (2019)</div>
-</div>
-
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1zu2gohkdL0HBy5_3M6Us8eVrTzwfVUDG',
-  'https://drive.google.com/uc?export=download&id=1nYsIyxYcTtHb1CSQS3zn0wMgmYaEzy4p'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg" alt="John Wick Chapter 4">
-  <div class="poster-label">John Wick Chapter 4 (2023)</div>
-</div>
-
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=143rRBwsWzQqBgaN_EqXtvmAXpdz9wTyX',
-  'https://drive.google.com/uc?export=download&id=1RmEPhGVfXsovzPXubRbexaIhRs4uuuVA'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2VUmvqsHb6cEtdfscEA6fqqVzLg.jpg" alt="Ballerina">
-  <div class="poster-label">Ballerina (2025)</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dX6Lt1CtnqI6Ai4vL2fj61CFbeD.jpg" alt="Love">
+      <div class="poster-label">Love (2015)</div>
+    </div>
+		    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uj42ubGbgVL65T10SvPVr0p9mJc.jpg" alt="Sympathy for Mr. Vengeance">
+      <div class="poster-label">Sympathy for Mr. Vengeance (2002)</div>
+    </div>
+		    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" alt="Oldboy">
+      <div class="poster-label">Oldboy (2003)</div>
+    </div>
+	    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7F7Ozn0QpqkVvuv1kC2XpbuFvn9.jpg" alt="40 Acres">
+      <div class="poster-label">Lady Vengeance (2005)</div>
+    </div>
+<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xVSvIwRNzwXSs0CLefiiG6A96m4.jpg" alt="Being John Malkovich">
+      <div class="poster-label">Being John Malkovich (1999)</div>
+    </div>		
+	<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg" alt="Blade Runner 2049">
+      <div class="poster-label">Blade Runner 2049 (2017)</div>
+    </div>	
+	<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qOCPfhLqG1hmwF7z1NDAW2d7inX.jpg" alt="Dead Poets Society">
+      <div class="poster-label">Dead Poets Society (1989)</div>
+    </div>	
+	<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mrtukTgoK0n7KFyOZ2ThI6S9k1O.jpg" alt="Moving">
+      <div class="poster-label">Moving (1993)</div>
+    </div>	
 </div>
 </div>
-</div>
- <h2>🎬 Lista completa de filmes!</h2>
+<h2>🎬 Catálogo de filmes!</h2>
 <div class="conteudo">
   <div class="poster-container">
-    <div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=18miiG4JFjTSa2ogMMZq6IxeaiZzez3i2',
-  'https://drive.google.com/uc?export=download&id=1y2RKoHbKt_ZgTFRgE0id9fNzG_3kPbAz'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rAYkyMUPouCnzguUpKCiw3fa5ar.jpg" alt="40 Acres">
-  <div class="poster-label">40 Acres (2025)</div>
-</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rAYkyMUPouCnzguUpKCiw3fa5ar.jpg" alt="40 Acres">
+      <div class="poster-label">40 Acres (2025)</div>
+    </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1J60ekmoKu1ry0AEJ_slt85-cHr4Pep4e',
-  'https://drive.google.com/uc?export=download&id=1tETTNmTed1zCCd05w_eQLDLR8ob9_yhw'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ihXINKQfzdaVKvZwZqmchy20uVD.jpg" alt="A Sacrifice">
-  <div class="poster-label">A Sacrifice (2025)</div>
-</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ihXINKQfzdaVKvZwZqmchy20uVD.jpg" alt="A Sacrifice">
+      <div class="poster-label">A Sacrifice (2025)</div>
+    </div>
 
-	<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1VbXq675SvEICbsMrGoQ1XmlyTxZLEkaL',
-  'https://drive.google.com/uc?export=download&id=1QljQ6Lbktr0KUE6H9v4Pqfskl3uD3jzk'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9jrhldzLHXia0uieyqK8UJ8PNAG.jpg" alt="Abandoned Man">
-  <div class="poster-label">Abandoned Man (2025)</div>
-</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9jrhldzLHXia0uieyqK8UJ8PNAG.jpg" alt="Abandoned Man">
+      <div class="poster-label">Abandoned Man (2025)</div>
+    </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1q2K2Zg8rqNkyutcw3wrYZ-OkCTArKNe3',
-  'https://drive.google.com/uc?export=download&id=1IBsWF1KDaYw8dzYQzbuiy-jrRwSeQ_y1'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r2mnkY3fmcvCpRs4qB7rPnHcxVo.jpg" alt="Barron's Cove">
-  <div class="poster-label">Barron's Cove (2024)</div>
-</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/r2mnkY3fmcvCpRs4qB7rPnHcxVo.jpg" alt="Barron's Cove">
+      <div class="poster-label">Barron's Cove (2024)</div>
+    </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1wRSDVJvD3mLs9JfH-kJVxjUsl1mX8nDf',
-  'https://drive.google.com/uc?export=download&id=1B2FUduG8PNJVhq3EU7p15rt7-xUjiFgm'
-)">
+<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xVSvIwRNzwXSs0CLefiiG6A96m4.jpg" alt="Being John Malkovich">
+      <div class="poster-label">Being John Malkovich (1999)</div>
+    </div>	
+	
+	<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gajva2L0rPYkEWjzgFlBXCAVBE5.jpg" alt="Blade Runner 2049">
+      <div class="poster-label">Blade Runner 2049 (2017)</div>
+    </div>	
+
+<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qOCPfhLqG1hmwF7z1NDAW2d7inX.jpg" alt="Dead Poets Society">
+      <div class="poster-label">Dead Poets Society (1989)</div>
+    </div>	
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xWlF2i51zUq7BUq4iJte1g9NyIM.jpg" alt="Death of a Unicorn">
   <div class="poster-label">Death of a Unicorn (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1BUjOxQzFj_-xB_KfK5nT9G2yVFbWfWwV',
-  'https://drive.google.com/uc?export=download&id=1XsP8LwUE7Mk68MQr8k358hjG3hJeGZn5'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9Jw6jys7q9gjzVX5zm1z0gC8gY9.jpg" alt="Dirty Dancing">
   <div class="poster-label">Dirty Dancing (1987)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1g2gTBEfEmpJSoSUH_l0DHJ_kHfJS1EUx',
-  'https://drive.google.com/uc?export=download&id=1D4EHLH1p16Tl74y7OJNbvv5Rd7etkb_p'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/cCPd2exZCb7zHAG3CgBfu85DKUi.jpg" alt="Drive Me Crazy">
   <div class="poster-label">Drive Me Crazy (1999)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1AcQbasAE13F3E7lWAKLZ7oy--mJy27Vx',
-  'https://drive.google.com/uc?export=download&id=1DMbMxBvMnLwUPb8EMBdzRikHrbHT5EyF'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5kPtVFAJ1C9IhRqIe8QVFn05eSO.jpg" alt="Dying AKA Sterben">
   <div class="poster-label">Dying / Sterben (2024)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=13n7JLsDCmORuMPz25-nVioPX3faMNxZa',
-  'https://drive.google.com/uc?export=download&id=1YRO5jJeMQ985kyxH4iwgq7WZk0OuNhu3'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/12Va3oO3oYUdOd75zM57Nx1976a.jpg" alt="Eenie Meanie">
   <div class="poster-label">Eenie Meanie (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1kpKDBUgFDuyd10nH6c-GXK9vBRpa6MUu',
-  'https://drive.google.com/uc?export=download&id=1apvhNn1r5AQzc8byWWO8fq17CG_veeRv'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/9PXZIUsSDh4alB80jheWX4fhZmy.jpg" alt="F1 - The Movie">
   <div class="poster-label">F1 - The Movie (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1VZ7s4KajH_Yj5RjqBiQq9xzPaVHexqXd',
-  'https://drive.google.com/uc?export=download&id=1N8u8jimljZ61CsCthwN-4-tYgwk8nYzX'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/1mXhlQMnlfvJ2frxTjZSQNnA9Vp.jpg" alt="Final Destination 1">
   <div class="poster-label">Final Destination 1 (2000)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=19YKuOKyTHDJmUwZ8A5sJXp6t58_ELIBG',
-  'https://drive.google.com/uc?export=download&id=10WicwdDZ7bagjIEUgiNhgl5Sf7OA-J9u'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dg6Tf98InieJSClSKQJTQevYWmB.jpg" alt="Final Destination 2">
   <div class="poster-label">Final Destination 2 (2003)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1SL7HbIdKfPgBssUEKk1vOT5tShJ0wSL0',
-  'https://drive.google.com/uc?export=download&id=1Y6az0A_dWWWUju5bVaNTC9xpZ9ZCo38S'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/p7ARuNKUGPGvkBiDtIDvAzYzonX.jpg" alt="Final Destination 3">
   <div class="poster-label">Final Destination 3 (2006)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1lv1MFJCs6cY9aoT5MW2qAJovhq7OsCSt',
-  'https://drive.google.com/uc?export=download&id=127LWCuFiSWLoeNCkbAPTp79SmZ344eow'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5vxXrr1MqGsT4NNeRITpfDnl4Rq.jpg" alt="The Final Destination">
   <div class="poster-label">The Final Destination (2009)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1fol40mcIQtj3FMWm1jdLH67Ys7YClD8v',
-  'https://drive.google.com/uc?export=download&id=1WS8SHYGtjXku1gC5LCAlJVMd18yv8yEs'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/Akx1Po4ZLetOWfYJhQf75tbhTtK.jpg" alt="Final Destination 5">
   <div class="poster-label">Final Destination 5 (2011)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1cdbWn73kTxValf2i1Xx8-sNgUhR-57-4',
-  'https://drive.google.com/uc?export=download&id=11zUOb5QV7SPy5xCkWMqOWZ0EYqpSs7S9'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6WxhEvFsauuACfv8HyoVX6mZKFj.jpg" alt="Final Destination Bloodlines">
   <div class="poster-label">Final Destination Bloodlines (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1imGMbSWsHq19Y8g9amZMpDzF6amXLOMo',
-  'https://drive.google.com/uc?export=download&id=19h_1fLj62saeCd9XksKNLmfeGENK_8Nu'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mu6wHwH0IwCCaEYtpqujuPJYat1.jpg" alt="Frankenstein">
   <div class="poster-label">Frankenstein (1931)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=13sluCbTZHF4MI5sH6vWzkaEYq6_0tonl',
-  'https://drive.google.com/uc?export=download&id=1zldPWSALhICoUXnwMPn6W30lA4As1Ls4'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dVsgV7ak6vR5xyXFggooJQinXBg.jpg" alt="Hallow Road">
   <div class="poster-label">Hallow Road (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=17UY0r5jlZ4oGTLzfnWzLjpc-S7GkVGXR',
-  'https://drive.google.com/uc?export=download&id=1_4LZcWfhoear24BS0pDzDHZBWW3Penep'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg" alt="John Wick">
   <div class="poster-label">John Wick (2014)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1mp1LNppaNaYLoURqQUqGOwECm2yi6wOm',
-  'https://drive.google.com/uc?export=download&id=1MhRb3Kl1gYRhvBl6_dJ-iPJ5mq8Rkdg_'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hXWBc0ioZP3cN4zCu6SN3YHXZVO.jpg" alt="John Wick Chapter 2">
   <div class="poster-label">John Wick Chapter 2 (2017)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1yXWAqrHO4muQWBURqvEqII0NjmDNKYaF',
-  'https://drive.google.com/uc?export=download&id=1RExZN4Zx1SLxlYS9ibeFlZ4IoqODnvlC'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ziEuG1essDuWuC5lpWUaw1uXY2O.jpg" alt="John Wick Chapter 3 - Parabellum">
   <div class="poster-label">John Wick Chapter 3 - Parabellum (2019)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1zu2gohkdL0HBy5_3M6Us8eVrTzwfVUDG',
-  'https://drive.google.com/uc?export=download&id=1nYsIyxYcTtHb1CSQS3zn0wMgmYaEzy4p'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/vZloFAK7NmvMGKE7VkF5UHaz0I.jpg" alt="John Wick Chapter 4">
   <div class="poster-label">John Wick Chapter 4 (2023)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=143rRBwsWzQqBgaN_EqXtvmAXpdz9wTyX',
-  'https://drive.google.com/uc?export=download&id=1RmEPhGVfXsovzPXubRbexaIhRs4uuuVA'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/2VUmvqsHb6cEtdfscEA6fqqVzLg.jpg" alt="Ballerina">
   <div class="poster-label">Ballerina (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1K3F6VXZyhZox_Q9TmsmKfPx2e-aGQnKr',
-  'https://drive.google.com/uc?export=download&id=13vQRWO-D8ebmM_mpAy5qUvdxnjPUbp6V'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/63viWuPfYQjRYLSZSZNq7dglJP5.jpg" alt="Jurassic Park">
   <div class="poster-label">Jurassic Park (1993)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1ZKRP1-hHcwX3aoGvvEwxmpXMCRiDl2ya',
-  'https://drive.google.com/uc?export=download&id=1pEpWRVQDmJ2Tii2RVtkFDZnvOfihMfHu'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/6fSkhv35nPSw9hwPVCMINQFG1WD.jpg" alt="The Lost World Jurassic Park">
   <div class="poster-label">The Lost World Jurassic Park (1997)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1kkD4aZ-hGbAlMqsOyBoeHq1_bpneT9TZ',
-  'https://drive.google.com/uc?export=download&id=1Vra7ci_gqIqn09kxOZEbDZo68bnPzE82'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/oQXj4NUfS3r3gHXtDOzcJgj1lLc.jpg" alt="Jurassic Park 3">
   <div class="poster-label">Jurassic Park 3 (2001)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1rlPt_9CypPbkdFwMMvksLQMcqH2UeSis',
-  'https://drive.google.com/uc?export=download&id=1KxcfVtbTgRwtyn0W2I2c7veSRppFwRs8'
-)">
+	    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/7F7Ozn0QpqkVvuv1kC2XpbuFvn9.jpg" alt="40 Acres">
+      <div class="poster-label">Lady Vengeance (2005)</div>
+    </div>
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hhkiqXpfpufwxVrdSftzeKIANl3.jpg" alt="Locked">
   <div class="poster-label">Locked (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1BTQh-SR-N3pyTWMQpOgdnmbkJusEjgNT',
-  'https://drive.google.com/uc?export=download&id=1yKLZcPjniy8OzjlmManilerVl4IU2UzY'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg" alt="M3GAN">
-  <div class="poster-label">M3GAN (2022)</div>
-</div>
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/dX6Lt1CtnqI6Ai4vL2fj61CFbeD.jpg" alt="Love">
+      <div class="poster-label">Love (2015)</div>
+    </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1ZRNDFdMp4807YAzsMrCv3sNHfLJ7TQGU',
-  'https://drive.google.com/uc?export=download&id=1T9CWRL4AHD1elPELnauKXPuy4S1jL914'
-)">
-  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4a63rQqIDTrYNdcnTXdPsQyxVLo.jpg" alt="M3GAN 2.0">
-  <div class="poster-label">M3GAN 2.0 (2025)</div>
-</div>
-
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1q-Oyzf30b431w9BT8h-krfFlycK84kKL',
-  'https://drive.google.com/uc?export=download&id=1ZW0-_jseqZ3CNXZh6J2clwMmh26LtRZ-'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/kc5n7LJUmvBsVxzAla1ONN8kouP.jpg" alt="Maa">
   <div class="poster-label">Maa (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=12eTLRNtxvS5mvZ2VFdhv-yhmrbc1xIzo',
-  'https://drive.google.com/uc?export=download&id=1wK-7Wy_W0gCRQ4JnULz3ZP3pnO8ygFDU'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/d9nBoowhjiiYc4FBNtQkPY7c11H.jpg" alt="M3GAN">
+  <div class="poster-label">M3GAN (2022)</div>
+</div>
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+  <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4a63rQqIDTrYNdcnTXdPsQyxVLo.jpg" alt="M3GAN 2.0">
+  <div class="poster-label">M3GAN 2.0 (2025)</div>
+</div>
+
+<div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/mrtukTgoK0n7KFyOZ2ThI6S9k1O.jpg" alt="Moving">
+      <div class="poster-label">Moving (1993)</div>
+    </div>	
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/n1KcNdCrz5s3ruij9eiT5IARter.jpg" alt="Neighborhood Watch">
   <div class="poster-label">Neighborhood Watch (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1aS0GYREjvb1TXUaK90SWKI_McUPhLJR0',
-  'https://drive.google.com/uc?export=download&id=1UP-z3YzWrblqGBLLyztqvwlMLglzWvVw'
-)">
+	    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/pWDtjs568ZfOTMbURQBYuT4Qxka.jpg" alt="Oldboy">
+      <div class="poster-label">Oldboy (2003)</div>
+    </div>
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/qtUihHj1VuhQEdSNfku0HN0VOGw.jpg" alt="Pieces We Leave Behind">
   <div class="poster-label">Pieces We Leave Behind (2023)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1HEXbv_VBHa_pEfhOt-RTI-r33N2LXpsL',
-  'https://drive.google.com/uc?export=download&id=1sCEQ8MGTp-Kh-psEn5xrdbfInxIbba9B'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/aHHCXbPjI6xHJoo5fkBNmPm2lo1.jpg" alt="Popeye's Revenge">
   <div class="poster-label">Popeye's Revenge (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1u1rKFgLsRMyLqfT6tsKUDm6Y-mPdW7Y9',
-  'https://drive.google.com/uc?export=download&id=1gzZQ_RyCFrL98THndqfMjxDUUQOXcZNa'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4CkZl1LK6a5rXBqJB2ZP77h3N5i.jpg" alt="Sinners">
   <div class="poster-label">Sinners (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1lIWqFvyDjvZer2m9int1590T1hQ8jhuU',
-  'https://drive.google.com/uc?export=download&id=1ALLuAI_J4YHuU6rdyT12m18d3l1j_GGP'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/xWWg47tTfparvjK0WJNX4xL8lW2.jpg" alt="Snow White">
   <div class="poster-label">Snow White (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1eWs1wgw3z6vd4HE-s-QJbZIGpUmnK9Jx',
-  'https://drive.google.com/uc?export=download&id=1v9NP_VIJ1YnE2Wx6r0GBQFkHyxfkW_WS'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/5nbkShkOEXUoKVhaX0XG41wyBkq.jpg" alt="Soylent Green">
   <div class="poster-label">Soylent Green (1973)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1OntcRRANQ7nQTaAUTcAN_JU_Z-YUGdQD',
-  'https://drive.google.com/uc?export=download&id=12W_FsNdMwyAzkfjB6sGuqy9A09adhUvU'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ombsmhYUqR4qqOLOxAyr5V8hbyv.jpg" alt="Superman">
   <div class="poster-label">Superman (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1cVqCQUZLGuouoRw7FL4VBxfDHeH6Ohy6',
-  'https://drive.google.com/uc?export=download&id=1lHI--PEM8InaxrI-DFfmnhrBohAMncG1'
-)">
+	    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
+      <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/uj42ubGbgVL65T10SvPVr0p9mJc.jpg" alt="Sympathy for Mr. Vengeance">
+      <div class="poster-label">Sympathy for Mr. Vengeance (2002)</div>
+    </div>
+
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/sf6j1SbgDf7VTjL1MRq5MAQSOyE.jpg" alt="The Bayou">
   <div class="poster-label">The Bayou (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=11gYdbELHlOg5YSjqu8B552EzfecPJC39',
-  'https://drive.google.com/uc?export=download&id=1ObvlsL89SMDWHeHC6hi3OtZYhV7BEhWI'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/fPqRnIPUHR09VlB64dKWEri10UN.jpg" alt="The Beehive">
   <div class="poster-label">The Beehive (2023)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=18PbSNi2PHCvZDfmwEC9Rj3ddS-JAiIYS',
-  'https://drive.google.com/uc?export=download&id=19W_723622Sx_NPbXLxl3gVKOly4QJe8N'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/rMMB3v6jYHjsvXRNJYESacoTD7j.jpg" alt="The Crow">
   <div class="poster-label">The Crow (1994)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1w3LwYc2jArejRnJINcHqxBD2JLtfgFIc',
-  'https://drive.google.com/uc?export=download&id=1rccIckcnhAz-dSglfwsRFuYecPHKx9Ni'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/iRR9Ri2GX3c5bikrz1Zuj4u5bkl.jpg" alt="The Truth About Jussie Smollett?">
   <div class="poster-label">The Truth About Jussie Smollett? (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=13GsbS-pz0ZlsnGo8ZMmwlAB1spUROLDv',
-  'https://drive.google.com/uc?export=download&id=1Nv2fwH1TI7mi5CueArHzh1z5-3SGw5U1'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/31CKSlZdsvdY8bysV5WeR2YvTim.jpg" alt="The World Will Tremble">
   <div class="poster-label">The World Will Tremble (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1awnQ6A8a7Mw5cd25lLVe973PYH5MKavF',
-  'https://drive.google.com/uc?export=download&id=1WxYzy2ej4SjAhzKd_IsrtNpwmqwF43up'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/hqcexYHbiTBfDIdDWxrxPtVndBX.jpg" alt="Thunderbolts">
   <div class="poster-label">Thunderbolts (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1pfkNsgc3iMDBgtoFrxJ6UYpPEuL0XrAH',
-  'https://drive.google.com/uc?export=download&id=1J4XROS-7or-U3gR2IUy3r6d48kQqh2Ev'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/4TCAsaSIUTLNRfzGIYsmiyBW3E9.jpg" alt="Two Women">
   <div class="poster-label">Two Women / Deux femmes en or (2025)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1GxLvOv_Ap8BAMFI2TgyqQ6kSHQA272qN',
-  'https://drive.google.com/uc?export=download&id=1pG-k5d6EVr7akNqhk8VFvVUOVQCNq4tg'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/if6vjNZZX2JEclfd4rcus9kOHwT.jpg" alt="Where the Boys Are">
   <div class="poster-label">Where the Boys Are (1960)</div>
 </div>
 
-<div class="poster-thumb" onclick="abrirModalResolucao(
-  'https://drive.google.com/uc?export=download&id=1_sPayEMyvzFiBAycwvJD0SzHH-iGyhiU',
-  'https://drive.google.com/uc?export=download&id=1wT_7onHUR7TgeG45NLFj-XXyYWwHZEKq'
-)">
+    <div class="poster-item" onclick="abrirPoster(this.querySelector('img').src)">
   <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/gSZQC6u86iaugBSs1KBrXST7KSL.jpg" alt="Wise Blood">
   <div class="poster-label">Wise Blood (1979)</div>
 </div>
@@ -606,17 +469,6 @@ h2.ativo::after {
 <!-- Continue o mesmo padrão para todos os outros filmes -->
 
     <!-- Repita para outros pôsteres -->
-  </div>
-</div>
-
-<!-- Modal 480p / 1080p -->
-<div id="modal-resolucao">
-  <div class="modal-content">
-    <p>Escolha a resolução:</p>
-    <button id="btn480">480p</button>
-    <button id="btn1080">1080p</button>
-    <br><br>
-    <button onclick="fecharModalResolucao()">Fechar</button>
   </div>
 </div>
 
@@ -645,18 +497,6 @@ botoes.forEach(h2 => {
     conteudo.classList.add("visivel");
   });
 });
-
-// Modal de resolução
-let link480 = '', link1080 = '';
-function abrirModalResolucao(l480, l1080){
-  link480 = l480; link1080 = l1080;
-  document.getElementById('modal-resolucao').style.display = 'flex';
-}
-function fecharModalResolucao(){
-  document.getElementById('modal-resolucao').style.display = 'none';
-}
-document.getElementById('btn480').onclick = () => window.open(link480,'_blank');
-document.getElementById('btn1080').onclick = () => window.open(link1080,'_blank');
 
 // Modal do poster grande
 function abrirPoster(src){
